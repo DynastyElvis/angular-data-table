@@ -1,109 +1,112 @@
-# Angular Data Table Component
+Here’s the **pure Markdown** version of your content, ready to copy and paste into a `README.md` file:
 
-## Overview
-This project is an Angular-based data table component that fetches data from an API and displays it in a well-structured table. It includes loading states, error handling, and additional functionalities such as sorting and filtering.
+```markdown
+## **Install dependencies:**
 
-## Screenshot
-![Project Screenshot](https://raw.githubusercontent.com/DynastyElvis/angular-data-table/237be6f91d629708d62d2638670baa370c6a2e62/angular-data-table/src/assets/Screen%20Shot%202025-03-10%20at%2023.00.45.png)
-
-## Live Link
-[Live Demo](https://dynastyelvis.github.io/angular-data-table/)
-
----
-
-## Setup Instructions
-### Prerequisites
-- Node.js (v20.17.0 or higher recommended)
-- Angular CLI
-- A modern web browser
-
-### Installation
-```sh
-# Clone the repository
-git clone https://github.com/DynastyElvis/angular-data-table.git
-cd angular-data-table
-
-# Install dependencies
+```bash
 npm install
-
-# Serve the application
-ng serve --open
 ```
 
 ---
 
-## Features
-- Fetches data from an API using Angular's `HttpClientModule`
-- Displays data in a well-structured table using `*ngFor`
-- Implements loading and error handling states
-- Basic styling for readability
-- Uses Angular services for API communication
-- **Bonus Features:**
-  - Sorting by table columns
-  - Filtering capability
-  - Pagination / "Load More" functionality
+## **Start the development server:**
+
+```bash
+ng serve
+```
 
 ---
 
-## Navigation
-- [Go Back to the Top](#angular-data-table-component)
+## **Open your browser and navigate to:**
+
+```
+http://localhost:4200
+```
 
 ---
 
-## Specifications
+## **Design Decisions**
+- **Reusable Component**: The `DataTableComponent` is designed to be reusable and can be easily extended for additional features.
+- **Error Handling**: Errors are caught and displayed gracefully, ensuring a good user experience.
+- **Styling**: The UI uses a clean and modern design with Montserrat font and Font Awesome icons.
+- **Responsive Design**: The table is responsive and works well on both desktop and mobile devices.
+
+---
+
+## **Packages**
+- **Angular**: Core framework for building the application.
+- **Font Awesome**: For icons (search, sorting arrows).
+- **RxJS**: For handling asynchronous data fetching.
+- **Angular HttpClient**: For making API requests.
+
+---
+
+## **Live Link**
+[View Live Demo](https://angular-data-table-demo.vercel.app)
+
+---
+
+## **Specifications**
+
 ### **Behavior**
-- Fetches and displays API data in a structured format
-- Shows a loading state while fetching data
-- Displays an error message if data fetching fails
+- Fetches data from an API and displays it in a table.
+- Allows sorting by clicking on column headers.
+- Filters data using a search input and dropdown.
+- Paginates data for better navigation.
 
 ### **Input**
-- API endpoint URL
-- Optional filters and sorting parameters
+- API endpoint: `https://jsonplaceholder.typicode.com/users`
+- Search input: Filters by `name` or `email`.
+- Dropdown: Filters by `username`.
 
 ### **Output**
-- A populated data table with sorting and filtering options
-- Error messages if the API request fails
+- Displays a table with `ID`, `Name`, `Email`, and `Username`.
+- Shows loading and error states.
 
 ---
 
-## Testing
-Run unit tests using:
-```sh
-ng test
+## **Testing**
+- **Manual Testing**:
+  - Tested sorting, filtering, and pagination functionality.
+  - Verified loading and error states.
+- **Unit Testing**:
+  - Unit tests can be added using Angular's `TestBed` and `Jasmine`.
+
+---
+
+## **Known Bugs**
+- None at the moment. Please report any issues [here](https://github.com/DynastyElvis/angular-data-table/issues).
+
+---
+
+## **Support**
+For support, contact:
+- **Email**: [kipkemoilvs@gmail.com](mailto:kipkemoilvs@gmail.com)
+- **LinkedIn**: [Elvis Kipkemoi](https://www.linkedin.com/in/elvis-kipkemoi-aa3548209/)
+
+---
+
+## **Developer**
+- **Name**: Elvis Kipkemoi
+- **Portfolio**: [Portfolio](https://portfolio-elvis.vercel.app)
+- **LinkedIn**: [Elvis Kipkemoi](https://www.linkedin.com/in/elvis-kipkemoi-aa3548209/)
+
+---
+
+## **License**
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## **Go Back to the Top**
+[Back to Top](#angular-data-table)
 ```
-Run end-to-end tests using:
-```sh
-ng e2e
-```
 
 ---
 
-## Packages Used
-- Angular (latest version)
-- Angular Material (for UI components)
-- RxJS (for handling async operations)
+### **How to Use**
+1. Copy the entire Markdown content above.
+2. Paste it into your `README.md` file in the root of your project.
+3. Commit and push the changes to your GitHub repository.
 
----
-
-## Version
-- Angular Version: 17+
-
----
-
-## Known Bugs
-- No known bugs. If found, please report via email.
-
----
-
-## Support
-For any issues or inquiries, contact:
-- **Email:** Kipkemoilvs@gmail.com
-- **Developer:** Kipkemoi Elvis  
-  - [LinkedIn](https://www.linkedin.com/in/elvis-kipkemoi-aa3548209/)  
-  - [Portfolio](https://portfolio-elvis.vercel.app/)
-
----
-
-## License
-[MIT License](LICENSE)
-
+Let me know if you need further assistance! 😊
