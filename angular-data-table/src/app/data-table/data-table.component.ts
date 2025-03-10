@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common'; // Add this line
 import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-data-table',
+  standalone: true, // Add this line
+  imports: [CommonModule], // Add this line
   templateUrl: './data-table.component.html',
   styleUrls: ['./data-table.component.css']
 })
