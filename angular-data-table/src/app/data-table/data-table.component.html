@@ -1,42 +1,58 @@
-<div *ngIf="loading">Loading...</div>
-<div *ngIf="error">An error occurred while fetching data.</div>
+<div class="container">
+  <!-- Header -->
+  <div class="header">
+    <h1>User Data Table</h1>
+    <div class="filters">
+      <!-- Search input with icon -->
+      <div class="search-box">
+        <fa-icon [icon]="faSearch" class="search-icon"></fa-icon>
+        <input [(ngModel)]="searchText" (input)="filter()" placeholder="Search by name or email..." />
+      </div>
 
-<!-- Search input for filtering -->
-<input [(ngModel)]="searchText" (input)="filter()" placeholder="Search by name or email..." />
+      <!-- Username filter dropdown -->
+      <select [(ngModel)]="usernameFilter" (change)="filter()">
+        <option value="">All Usernames</option>
+        <option *ngFor="let username of uniqueUsernames" [value]="username">{{ username }}</option>
+      </select>
+    </div>
+  </div>
 
-<!-- Data table -->
-<table *ngIf="!loading && !error">
-  <thead>
-    <tr>
-      <!-- Sorting headers with indicators -->
-      <th (click)="sort('id')">
-        ID <span *ngIf="sortColumn === 'id'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
-      </th>
-      <th (click)="sort('name')">
-        Name <span *ngIf="sortColumn === 'name'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
-      </th>
-      <th (click)="sort('email')">
-        Email <span *ngIf="sortColumn === 'email'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
-      </th>
-      <th (click)="sort('username')">
-        Username <span *ngIf="sortColumn === 'username'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- Display paginated data -->
-    <tr *ngFor="let item of paginatedData">
-      <td>{{ item.id }}</td>
-      <td>{{ item.name }}</td>
-      <td>{{ item.email }}</td>
-      <td>{{ item.username }}</td>
-    </tr>
-  </tbody>
-</table>
+  <!-- Loading and error states -->
+  <div *ngIf="loading" class="loading">Loading...</div>
+  <div *ngIf="error" class="error">An error occurred while fetching data.</div>
 
-<!-- Pagination controls -->
-<div *ngIf="!loading && !error">
-  <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
-  <span>Page {{ currentPage }} of {{ totalPages }}</span>
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  <!-- Data table -->
+  <table *ngIf="!loading && !error">
+    <thead>
+      <tr>
+        <th (click)="sort('id')">
+          ID <fa-icon [icon]="getSortIcon('id')"></fa-icon>
+        </th>
+        <th (click)="sort('name')">
+          Name <fa-icon [icon]="getSortIcon('name')"></fa-icon>
+        </th>
+        <th (click)="sort('email')">
+          Email <fa-icon [icon]="getSortIcon('email')"></fa-icon>
+        </th>
+        <th (click)="sort('username')">
+          Username <fa-icon [icon]="getSortIcon('username')"></fa-icon>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of paginatedData">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.username }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination controls -->
+  <div *ngIf="!loading && !error" class="pagination">
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+    <span>Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+  </div>
 </div>

@@ -1,33 +1,52 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms'; // Add this line
+import { FormsModule } from '@angular/forms';
 import { DataService } from '../data.service';
+import {
+  faSearch,
+  faSort,
+  faSortUp,
+  faSortDown,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-data-table',
   standalone: true,
-  imports: [CommonModule, FormsModule], // Add FormsModule here
+  imports: [CommonModule, FormsModule, FontAwesomeModule], // Add FontAwesomeModule
   templateUrl: './data-table.component.html',
-  styleUrls: ['./data-table.component.css']
+  styleUrls: ['./data-table.component.css'],
 })
 export class DataTableComponent implements OnInit {
-  data: any[] = []; // Original data from API
-  filteredData: any[] = []; // Data after filtering
+  // Icons
+  faSearch = faSearch;
+  faSort = faSort;
+  faSortUp = faSortUp;
+  faSortDown = faSortDown;
+
+  // Data and state
+  data: any[] = [];
+  filteredData: any[] = [];
   loading: boolean = true;
   error: boolean = false;
-  searchText: string = ''; // For filtering
+  searchText: string = ''; // For search filter (name/email)
+  usernameFilter: string = ''; // For username filter
+  uniqueUsernames: string[] = []; // Unique usernames for dropdown
   sortColumn: string = ''; // Current column to sort
   sortDirection: 'asc' | 'desc' = 'asc'; // Sorting direction
   currentPage: number = 1; // Current page for pagination
   itemsPerPage: number = 5; // Items per page
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.dataService.getData().subscribe(
       (response) => {
         this.data = response;
-        this.filteredData = response; // Initialize filteredData
+        this.filteredData = response;
+        this.uniqueUsernames = [
+          ...new Set(response.map((item) => item.username)),
+        ]; // Get unique usernames
         this.loading = false;
       },
       (error) => {
@@ -35,6 +54,17 @@ export class DataTableComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+
+  // Filter method
+  filter() {
+    this.filteredData = this.data.filter(
+      (item) =>
+        (item.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
+          item.email.toLowerCase().includes(this.searchText.toLowerCase())) &&
+        (this.usernameFilter ? item.username === this.usernameFilter : true)
+    );
+    this.currentPage = 1; // Reset to first page after filtering
   }
 
   // Sorting method
@@ -53,13 +83,12 @@ export class DataTableComponent implements OnInit {
     });
   }
 
-  // Filtering method
-  filter() {
-    this.filteredData = this.data.filter(item =>
-      item.name.toLowerCase().includes(this.searchText.toLowerCase()) ||
-      item.email.toLowerCase().includes(this.searchText.toLowerCase())
-    );
-    this.currentPage = 1; // Reset to first page after filtering
+  // Get sorting icon for a column
+  getSortIcon(column: string) {
+    if (this.sortColumn === column) {
+      return this.sortDirection === 'asc' ? this.faSortUp : this.faSortDown;
+    }
+    return this.faSort;
   }
 
   // Pagination methods
