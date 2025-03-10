@@ -1,12 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-data-table',
-  standalone: true,
-  imports: [],
   templateUrl: './data-table.component.html',
-  styleUrl: './data-table.component.css'
+  styleUrls: ['./data-table.component.css']
 })
-export class DataTableComponent {
+export class DataTableComponent implements OnInit {
+  data: any[] = [];
+  loading: boolean = true;
+  error: boolean = false;
 
+  constructor(private dataService: DataService) { }
+
+  ngOnInit(): void {
+    this.dataService.getData().subscribe(
+      (response) => {
+        this.data = response;
+        this.loading = false;
+      },
+      (error) => {
+        this.error = true;
+        this.loading = false;
+      }
+    );
+  }
 }
