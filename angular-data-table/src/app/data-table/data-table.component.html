@@ -1,17 +1,31 @@
 <div *ngIf="loading">Loading...</div>
 <div *ngIf="error">An error occurred while fetching data.</div>
 
+<!-- Search input for filtering -->
+<input [(ngModel)]="searchText" (input)="filter()" placeholder="Search by name or email..." />
+
+<!-- Data table -->
 <table *ngIf="!loading && !error">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Username</th>
+      <!-- Sorting headers with indicators -->
+      <th (click)="sort('id')">
+        ID <span *ngIf="sortColumn === 'id'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+      </th>
+      <th (click)="sort('name')">
+        Name <span *ngIf="sortColumn === 'name'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+      </th>
+      <th (click)="sort('email')">
+        Email <span *ngIf="sortColumn === 'email'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+      </th>
+      <th (click)="sort('username')">
+        Username <span *ngIf="sortColumn === 'username'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+      </th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of data">
+    <!-- Display paginated data -->
+    <tr *ngFor="let item of paginatedData">
       <td>{{ item.id }}</td>
       <td>{{ item.name }}</td>
       <td>{{ item.email }}</td>
@@ -19,3 +33,10 @@
     </tr>
   </tbody>
 </table>
+
+<!-- Pagination controls -->
+<div *ngIf="!loading && !error">
+  <button (click)="previousPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>

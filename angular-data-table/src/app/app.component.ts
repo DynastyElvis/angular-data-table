@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Add this line
-import { DataTableComponent } from './data-table/data-table.component'; // Add this line
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { DataTableComponent } from './data-table/data-table.component';
 
 @Component({
   selector: 'app-root',
-  standalone: true, // Add this line
-  imports: [CommonModule, DataTableComponent], // Add this line
+  standalone: true,
+  imports: [CommonModule, RouterOutlet, DataTableComponent], // Add DataTableComponent here
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
