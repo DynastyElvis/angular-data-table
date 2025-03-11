@@ -16,7 +16,6 @@ A clean and modern Angular data table component that fetches data from an API, d
 7. [Testing](#testing)
 8. [Known Bugs](#known-bugs)
 9. [Support](#support)
-10. [Developer](#developer)
 11. [License](#license)
 
 ---
@@ -92,11 +91,6 @@ http://localhost:4200
 - **Font Awesome**: For icons (search, sorting arrows).
 - **RxJS**: For handling asynchronous data fetching.
 - **Angular HttpClient**: For making API requests.
-
----
-
-## **Live Link**
-[View Live Demo](https://angular-data-table-demo.vercel.app)
 
 ---
 
