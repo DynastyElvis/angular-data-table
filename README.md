@@ -44,7 +44,7 @@ This project is an Angular-based implementation of a reusable data table compone
 ### **Prerequisites**
 - Node.js (v18 or higher)
 - Angular CLI (v17 or higher)
-- Git (optional)
+- Git (Version Control)
 
 ### **Setup Commands**
 1. Clone the repository:
@@ -136,14 +136,6 @@ http://localhost:4200
 ## **Support**
 For support, contact:
 - **Email**: [kipkemoilvs@gmail.com](mailto:kipkemoilvs@gmail.com)
-- **LinkedIn**: [Elvis Kipkemoi](https://www.linkedin.com/in/elvis-kipkemoi-aa3548209/)
-
----
-
-## **Developer**
-- **Name**: Elvis Kipkemoi
-- **Portfolio**: [Portfolio](https://portfolio-elvis.vercel.app)
-- **LinkedIn**: [Elvis Kipkemoi](https://www.linkedin.com/in/elvis-kipkemoi-aa3548209/)
 
 ---
 
@@ -156,11 +148,3 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 [Back to Top](#angular-data-table)
 ```
 
----
-
-### **How to Use**
-1. Copy the entire Markdown content above.
-2. Paste it into your `README.md` file in the root of your project.
-3. Commit and push the changes to your GitHub repository.
-
-Let me know if you need further assistance! 😊
